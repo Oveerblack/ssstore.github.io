@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <html lang="tr">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>Toomp & Oyun</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,600,700,800,900,1000' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,800,900,1000' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <style>
+           body {
+            background-color: #313131;
+            color: #fff;
+            font-family: "Manrope", "Segoe UI", "Roboto", "Lato", "sans-serif";
+            font-size: 100%;
+            margin: 0;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+        }
+        .image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.image-container img {
+    transition: transform 0.3s;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    background: rgba(10, 79, 10, 0.5);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+.progress-bar {
+    width: 100%;
+    background-color: #ccc;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-fill {
+    width: 0;
+    height: 100%;
+    background-color: #0a4f0a;
+    border-radius: 10px;
+    animation: progress 3s ease;
+}
+
+@keyframes progress {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+.text-element {
+    transition: color 0.3s;
+}
+
+.text-element:hover {
+    color: #0a4f0a;
+}
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    background-color: #313131;
+}
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 6.5225rem;
+        }
+        
+        h2 {
+            font-size: 4.325rem;
+        }
+        
+        h3 {
+            font-size: 2.525rem;
+        }
+        
+        h4 {
+            font-size: 1.525rem;
+        }
+        
+        h5 {
+            font-size: 1.1225rem;
+        }
+        
+        h6 {
+            font-size: .8125rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+        }
+        
+        .head-lite {
+            font-weight: 100;
+        }
+        
+        .head-reg {
+            font-weight: 400;
+        }
+        
+        .head-med {
+            font-weight: 700;
+        }
+        .nav-items ul li a {
+    padding: 0 20px 0 0;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+/* Apply this to the anchor links in your navigation */
+.nav-items ul li a {
+    transition: color 0.3s;
+}
+
+.nav-items ul li a:hover {
+    background-color: #0a4f0a;
+    color: #fff;
+}
+.hero-title {
+    align-self: center;
+    transition: transform 0.3s;
+}
+
+.hero-title:hover {
+    transform: scale(1.05);
+}
+.card-box {
+    display: block;
+    position: relative;
+    margin: 0 3.5rem;
+    bottom: 120px;
+    flex: 25%;
+    height: auto;
+    max-width: 25%;
+    box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+    z-index: 995;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card-box:hover {
+    transform: rotateY(180deg);
+}
+#video {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#video.loaded {
+    opacity: 1;
+}
+
+        figure {
+            margin: 0 0 0 0;
+            border-style: none;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+        
+        .row {
+            display: flex;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+        
+        .col-wrap {
+            flex: 50%;
+            max-width: 50%;
+            height: auto;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .col-wrap {
+                max-width: 100%;
+            }
+        }
+        /*Product Landing header*/
+        
+        #header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 0;
+            z-index: 999;
+            padding: 20px 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            align-self: start;
+            align-self: center;
+        }
+        
+        .header-grid {
+            display: grid;
+            background: transparent;
+        }
+        
+        .logo {
+            grid-column: 1;
+        }
+        
+        .nav-items {
+            grid-column: 13/13;
+        }
+        
+        .nav-items ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-items li {
+            display: inline;
+            text-align: end;
+        }
+        
+        .nav-items ul li a {
+            padding: 0 20px 0 0;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .text-wrapper {
+            grid-row: 2/2;
+            display: grid;
+            z-index: 999;
+        }
+        
+        .super-title {
+            letter-spacing: 2px;
+            text-transform: Uppercase;
+        }
+        
+        .hero-title {
+            align-self: center;
+        }
+        
+        #landing {
+            display: grid;
+            width: 100%;
+            grid-template-rows: repeat(3, 250px);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            background: url("https://lh3.googleusercontent.com/efO5rz9WdXXh1e2qU0zKDPiCdiFpWMWdzJukGltFiUVn7YDk3aczP_QNYYLNGLwoDzF9wZeEk7RYGWgPv93ai7wZL843vWVe5XPucLRHIJoRr4j-YJ3UjScmHaQoBPjfrEm_86UNR7spKTf_jnriVuYU-zpwzqda5SgvV_ILshiMKQMeCeQWTvqTX94oR-FCl7ckaL7V3hcoA0JXgGTdd_diZqfhtZM6VbE3hcRhQu8AZWkOytgfX3H0k7GbHehXYxRqKHtvgza6SFnaBVRrsR1CUrLYC5FGNtixygyPYQYsl09vh72D4O-nHZDDJGpM3q9cO_C7lYeVKBubtQpVXHQ2SjhUnnVKXJqdFybvsG3XY7RPX94fawYhv_d1RhCmUIx63a2BbklcRs3pCKdU9OdwWVH20LzA6LBMkik2vTnhYZAfCLoAAjw1RmEZXJ_H7GyQaa5yuJ8FwFEDEUkPTlyaXe44FzQ4DvoZBUCEm3inTPm3O4Hp1fU8Kqv1xAnIozgXOyZJv_zTQgL1zqFjJoDiV63AZL3pjBl-nAQ9DUVFIT-1QwmNLcgeb6_btNP7mJtazURlceMZMDabpTAGRJTEJLS4flQnUYi2KlkJfUJqK2rZfpz56l4eJ5p6tarmWU5dnWXAl1DSEgspSQbvir_L_8QdaPE=w1920-h737-no") no-repeat;
+            background-repeat: no-repeat;
+            background-position: 45% center;
+            background-size: cover;
+            min-height: calc(100vh);
+            min-height: calc(100vh - var(--vh-offset));
+            background-image:url(./img/ZOMBİ\ ÖLÜMÜ.jpg
+            );
+        }
+        
+        #landing .color-overlay {
+            background-color: #313131;
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+        }
+        
+        .img-canvas {
+            display: block;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            -webkit-box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+            border-style: none;
+            border-radius: 0px;
+            border: 0px;
+        }
+        
+        .img-canvas img .tile {
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+            -webkit-box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+        }
+        
+        .tile-img {
+            max-width: 100%;
+            height: auto;
+            margin: 0 0 -4px 0;
+        }
+        
+        #overview {
+            background: url("https://lh3.googleusercontent.com/ZagE-Sx_xgo1NM13t6DNhfluUFMGFOJWv45gOiakJ-_FnZATHj1qT_Tk6z8EEqTzfEapy0mWqJPt677UrMS8G5QAyPv82yDHQifp4VFuUjpVUCPBq_XHeCLbQ5qZvKEG1nNYIeMK6L7W5-hDcydRWE4ZzTGPlnfw3os4bf0SsWxLZoJMXqqXew0uMai9fA3qFLuf9646nBxzVTr2WLe10AnAc1AP4z0u5_9lt8uV5NldHwxF730yI80_nWgRTQ3JoCNApVFyazKsHMS2RT2IM6XTLbHykCrSJfhLqT2HjGIBJlaJprAo8HHbP3UXBIxm4CEtnj2YlAUauhm8zYpi8HdH1g2XRQKej8PEuXYySSWrw7oOBOoWJT4_V2-5PrIC22mw76SeD-01bvA9Xp0Hle5AplctMBrdRAl84VzVTTe_wQQybJjj9zvYBSBymBG8sPhtudwmzw_WYg6ok0-w20ASlBs9Nlzr1s6JgkTREb9pss_qM1G2JMhYmcTa3h527SyIPrK7t-sSaUQ79ZFB4TV2zaRfocWRrcRoaAAx3mFFMHTPFczgeFhESXyxe7x01CQ_lej1T5ADerf8_XqjuOWanbkGOU2VQhx-H8Iwr1KxbodaXZLgKN-H3FbHIB390GrniRqMf3_sSWGRWgySYOMvezStpJ8=w444-h938") no-repeat;
+            background-position: 100% -6%;
+            background-size: 40%;
+            background-color: #fff;
+            color: #000;
+            padding: 10% 0;
+        }
+        
+        #overview .text-wrapper {
+            text-align: left;
+        }
+        
+        .content {
+            margin: 0 35% 0 0;
+        }
+        
+        .btn {
+            background: transparent;
+            border-style: none;
+            font-family: 'Segoe UI';
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #0a4f0a;
+            border: 2px solid #0a4f0a;
+            padding: 15px 10px 14px;
+        }
+        
+        .wrap {
+            padding: 0 10px;
+        }
+        
+        #library {
+            padding: 10% 0 0 0;
+            z-index: 997;
+        }
+        
+        #library .gallery-wrapper {
+            display: grid;
+            position: relative;
+            padding: 15px 0;
+            height: 200px;
+            background: #fff;
+        }
+        
+        #library .content {
+            margin: 0 35% 20% 0;
+        }
+        
+        .card-box {
+            display: block;
+            position: relative;
+            margin: 0 3.5rem;
+            bottom: 120px;
+            flex: 25%;
+            height: auto;
+            max-width: 25%;
+            box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+            z-index: 995;
+            overflow: hidden;
+        }
+        
+        .sub-content {
+            padding: 0 0 100px 0;
+            text-align: center;
+            position: relative;
+            display: block
+        }
+        
+        #pricing {
+            padding: 50px 0;
+            display: block;
+            position: relative;
+            background-color: #fff;
+            color: #000;
+        }
+        
+        #pricing .sub-content {
+            padding: 25px 0;
+        }
+        
+        .head-canvas {
+            display: block;
+            margin: auto;
+            padding: 30px 0;
+        }
+        
+        .image {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: auto;
+            box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+        }
+        
+        .gr-canvas {
+            background: #0a4f0a;
+            padding: 20% 0 0 0;
+        }
+        
+        #pricing .w-container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: 10%;
+            margin-left: 10%;
+        }
+        
+        .subscription-area {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 2rem;
+        }
+        .btn {
+    background-color: #0a4f0a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #156915;
+    transform: scale(1.05);
+}
+
+#landing {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.navbar {
+    background-color: #313131;
+    transition: background-color 0.3s;
+}
+
+.navbar:hover {
+    background-color: #0a4f0a;
+}
+.hero {
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+        .subscription-box {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background: rgba(10, 90, 10, 0.8);
+            box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+            z-index: 995;
+            color: #fff;
+        }
+        
+        .plf-box {
+            display: block;
+            min-height: 250px;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .title-box {
+            display: block;
+            margin: 45px auto;
+            align-items: center;
+            text-align: center;
+            color: #fff
+        }
+        
+        .subscription-title {
+            letter-spacing: 2px;
+            text-transform: Uppercase;
+        }
+        
+        .icon-box {
+            display: flex;
+            padding: 30px 0;
+            min-height: 75px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .price-icon {
+            color: #fff;
+            width: 80px;
+        }
+        
+        .feature-box {
+            min-height: 270px;
+            padding: 10px;
+        }
+        
+        .i-frame {
+            padding: 25px;
+        }
+        
+        .gold-title {
+            margin: 0;
+        }
+        
+        .price-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .video-box {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            box-shadow: 0 60px 120px rgba(0, 0, 0, 0.6);
+        }
+        
+        .join-form {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .input-area {
+            padding: 10px;
+        }
+        
+        .input-box {
+            width: 350px;
+            height: auto;
+            font-family: 'Segoe UI';
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 15px 10px 14px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        
+        .join-form .btn {
+            border-style: none;
+            font-family: 'Segoe UI';
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+            border: 2px solid #000;
+        }
+        
+        .join-form .btn a {
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .btn-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 0 20px 0;
+        }
+        
+        .btn-area .btn {
+            color: #fff;
+            background: #000;
+        }
+    </style>
+    
+    <section id="header">
+        <div class="container">
+            <div class="header-grid">
+                <span class="logo"><img src="" id="header-img"><i>Toomp</i></img></span>
+                <nav id="nav-bar" class="nav-items ">
+                    <ul>
+                        <li><a href="#overview" class="nav-link">Oyun Yayınlama Hakkında</a></li>
+                        <li><a href="#library" class="nav-link">Oyunlar</a></li>
+                        <li><a href="#contact" class="nav-link">İntro</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <section id="landing">
+        <div class="color-overlay"></div>
+        <div class="container text-wrapper">
+            <h6 class="super-title">Scrip STUDİO Sunar</h6>
+            <h1 class="hero-title">Toomp Pass
+            </h1>
+            <h3 class="subhead head-lite">Oyunlarınızı güvenle oynayın</h3>
+        </div>
+    </section>
+            </div>
+        </div>
+    </section>
+    <section id="overview">
+        <div class="container text-wrapper">
+            <h6 class="super-title">100+ Oyun</h6>
+            <h2 class="head-lite">Kendi Oyununuzu Yayınlayalım</h2>
+            <div class="content">
+                <h4 class="head-reg">Eğer oyununuzu veya uygulamanızı yayınlamak istiyorsanız "kivancsadi20@gmail.com" gmail adresine oyununuzun dosyası, oyununuzun adı ve konusunu yazın.
+                </h4>
+            </div>
+        </div>
+    </section>
+    <section id="library">
+        <div class="container">
+            <div class="row">
+                <div class="col-wrap">
+                </div>
+                <div class="container text-wrapper">
+                    <h6 class="super-title">Oyun, Uygulama</h6>
+                    <h2 class="head-lite">Güvenliğinize Önem Veriyoruz</h2>
+                    <div class="content">
+                        <h5 class="head-reg">Güvenli şekilde oyun indirin
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-wrapper">
+            <div class="row">
+                <div class="card-box">
+                    <img src="https://store-images.s-microsoft.com/image/apps.17469.65642028844779555.c518e652-fc85-4d6e-99a2-3e9ae1656a91.6cace333-df13-4178-a46d-5938de4654a2?mode=scale&amp;q=90&amp;h=300&amp;w=200" class="image">
+                </div>
+                <div class="card-box">
+                    <img src="https://store-images.s-microsoft.com/image/apps.36093.14343301090572358.2000000000007864116.1feb0fed-abe9-4849-b638-8d7eca69cff4" class="image">
+                </div>
+                <div class="card-box">
+                    <img src="https://store-images.s-microsoft.com/image/apps.17382.13510798887677013.afcc99fc-bdcc-4b9c-8261-4b2cd93b8845.49beb011-7271-4f15-a78b-422c511871e4 " class="image">
+                </div>
+                <div class="card-box">
+                    <img src="https://store-images.s-microsoft.com/image/apps.51344.69361434237560300.08369373-2b5b-4056-89d1-c943a5bfd11b.5baa2661-0f85-45ba-b621-996e640fc265" class="image">
+                </div>
+            </div>
+        </div>
+        <div class="gr-canvas">
+            <div class="container">
+                <div class="sub-content">
+                    <div class="container text-wrapper">
+                        <h6 class="super-title">Geleceğe Doğru</h6>
+                        <h3 class="head-lite">İlerliyoruz</h3>
+                        <h5 class="head-reg">İntro
+                        </h5>
+                        <video width="640" height="360" controls>
+                            <source src="./vid/intro.mp4" type="video/mp4">
+                            Tarayıcınız video etiketini desteklemiyor.
+                        </video>
+                        
+                        </div>
+                    </div>
+                </div>
+             
+                          
+                      
+                        </div>
+                    </form>
+                </div>
+     
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+
+
+    </script>
+    <footer id="contact">
+
+    </footer>
+    <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+
+</html>
